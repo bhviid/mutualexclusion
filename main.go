@@ -8,7 +8,7 @@ import (
 	"log"
 	"net"
 	"os"
-	"time"
+	
 	"flag"
 
 	"google.golang.org/grpc"
@@ -22,17 +22,23 @@ type peer struct {
 	hasToken    bool
 	wantsAccess bool
 }
-
+//Flags for the command line when connecting a peer
 var(
 	ownPort = flag.Int("oPort", 8080, "own port")
 	nextPort = flag.Int("nPort", 8081, "port of the next client in the ring")
-	first = flag.Bool("first", false, "...")
+	first = flag.Bool("first", false, "marks the process of the first in the logical ring")
 )
 
 func main() {
-	//arg1, _ := strconv.ParseInt(os.Args[1], 10, 32)
-	//ownPort := int32(arg1) + 5000 // go run . 0..1..2..
 	flag.Parse()
+
+	//https://stackoverflow.com/a/19966217
+	f, err := os.OpenFile("bigoutput2.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	if err != nil {
+		log.Fatalf("error opening file: %v", err)
+	}
+	defer f.Close()
+	log.SetOutput(f)
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -56,39 +62,31 @@ func main() {
 			log.Fatalf("failed to server %v", err)
 		}
 	}()
-	//nextPort := int32((ownPort + 1)%3)
 	
-	//var conn *grpc.ClientConn
-	fmt.Printf("Attempting to dial port: %d\n", *nextPort)
+	log.Printf("Node on port: %d -- Attempting to dial port: %d\n",*ownPort, *nextPort)
 	conn, err := grpc.Dial(fmt.Sprintf(":%v", *nextPort), grpc.WithInsecure(), grpc.WithBlock())
 	
-	fmt.Printf("Dialed port: %d\n", *nextPort)
+	log.Printf("Node on port: %d -- Dialed port: %d\n",*ownPort, *nextPort)
 	
 	if err != nil {
 		log.Fatalf("Could not connect: %s", err)
 	}
-	//grpc.withblock to wait for the other peers/clients to start.
-	
-	// Defer means: When this function returns, call this method (meaing, one main is done, close connection)
 	defer conn.Close()
 	
-	//  Create new Client from generated gRPC code from proto
 	p.nextClient = me.NewMutualexclusionClient(conn)
 	
 	go func() {
 		for {
-			if p.hasToken {
-				fmt.Println("has token! :D")
-			}
-			if !p.wantsAccess {
+			if p.hasToken && !p.wantsAccess {
 				p.passToNextClient()
+				//log.Printf("Node on port: %d -- Passed token to %d\n",*ownPort, *nextPort)
 			} else if p.wantsAccess && p.hasToken {
 				//entered critical section
-				fmt.Println("entered critical section ")
-				time.Sleep(5 * time.Second)
+				log.Printf("Node on port: %d -- entered critical section\n", *ownPort)
+				//time.Sleep(5 * time.Second)
 				p.wantsAccess = false
 				//p.passToNextClient()
-				fmt.Println("left critical section ")
+				log.Printf("Node on port: %d -- left critical section\n",*ownPort)
 			}
 		}
 	}()
@@ -101,13 +99,12 @@ func main() {
 }
 
 func (p *peer) ReceiveToken(ctx context.Context, in *me.Token) (*me.Reply, error) {
+	//time.Sleep(2 * time.Second)
 	p.hasToken = true
 	return &me.Reply{}, nil
 }
 
 func (p *peer) passToNextClient() {
 	p.hasToken = false
-	time.Sleep(2 * time.Second)
 	p.nextClient.ReceiveToken(p.ctx, &me.Token{})
-
 }

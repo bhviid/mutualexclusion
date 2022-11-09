@@ -1,0 +1,25 @@
+2022/11/09 16:41:00 Node on port: 8080 -- Attempting to dial port: 8081
+2022/11/09 16:41:01 Node on port: 8081 -- Attempting to dial port: 8082
+2022/11/09 16:41:02 Node on port: 8080 -- Dialed port: 8081
+2022/11/09 16:41:04 Node on port: 8082 -- Attempting to dial port: 8080
+2022/11/09 16:41:04 Node on port: 8082 -- Dialed port: 8080
+2022/11/09 16:41:04 Node on port: 8081 -- Dialed port: 8082
+
+2022/11/09 16:41:10 Node on port: 8081 -- entered critical section
+2022/11/09 16:41:10 Node on port: 8081 -- left critical section
+2022/11/09 16:41:12 Node on port: 8080 -- entered critical section
+2022/11/09 16:41:12 Node on port: 8080 -- left critical section
+2022/11/09 16:41:13 Node on port: 8082 -- entered critical section
+2022/11/09 16:41:13 Node on port: 8082 -- left critical section
+2022/11/09 16:41:20 Node on port: 8080 -- entered critical section
+2022/11/09 16:41:20 Node on port: 8080 -- left critical section
+2022/11/09 16:41:21 Node on port: 8082 -- entered critical section
+2022/11/09 16:41:21 Node on port: 8082 -- left critical section
+2022/11/09 16:41:23 Node on port: 8081 -- entered critical section
+2022/11/09 16:41:23 Node on port: 8081 -- left critical section
+2022/11/09 16:41:29 Node on port: 8080 -- entered critical section
+2022/11/09 16:41:29 Node on port: 8080 -- left critical section
+2022/11/09 16:41:34 Node on port: 8082 -- entered critical section
+2022/11/09 16:41:34 Node on port: 8082 -- left critical section
+2022/11/09 16:41:35 Node on port: 8080 -- entered critical section
+2022/11/09 16:41:35 Node on port: 8080 -- left critical section

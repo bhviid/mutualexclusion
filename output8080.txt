@@ -1,0 +1,14 @@
+2022/11/09 16:31:07 Attempting to dial port: 8081
+2022/11/09 16:31:07 Dialed port: 8081
+2022/11/09 16:31:09 Passed token to 8081
+2022/11/09 16:31:15 Passed token to 8081
+2022/11/09 16:31:21 Passed token to 8081
+2022/11/09 16:31:27 Passed token to 8081
+2022/11/09 16:31:33 Passed token to 8081
+2022/11/09 16:31:42 entered critical section 
+2022/11/09 16:31:47 left critical section 
+2022/11/09 16:31:49 Passed token to 8081
+2022/11/09 16:32:00 Passed token to 8081
+2022/11/09 16:32:04 entered critical section 
+2022/11/09 16:32:09 left critical section 
+2022/11/09 16:32:11 Passed token to 8081

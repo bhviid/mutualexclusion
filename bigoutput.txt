@@ -1,0 +1,40 @@
+2022/11/09 16:35:27 Node on port: 8081 -- Attempting to dial port: 8082
+2022/11/09 16:35:29 Node on port: 8080 -- Attempting to dial port: 8081
+2022/11/09 16:35:29 Node on port: 8080 -- Dialed port: 8081
+2022/11/09 16:35:30 Node on port: 8082 -- Attempting to dial port: 8080
+2022/11/09 16:35:30 Node on port: 8082 -- Dialed port: 8080
+2022/11/09 16:35:31 Node on port: 8080 -- Passed token to 8081
+2022/11/09 16:35:31 Node on port: 8081 -- Dialed port: 8082
+2022/11/09 16:35:33 Node on port: 8081 -- Passed token to 8082
+2022/11/09 16:35:35 Node on port: 8082 -- Passed token to 8080
+2022/11/09 16:35:37 Node on port: 8080 -- Passed token to 8081
+2022/11/09 16:35:39 Node on port: 8081 -- Passed token to 8082
+2022/11/09 16:35:41 Node on port: 8082 -- Passed token to 8080
+2022/11/09 16:35:43 Node on port: 8081 -- entered critical section
+2022/11/09 16:35:43 Node on port: 8080 -- Passed token to 8081
+2022/11/09 16:35:48 Node on port: 8081 -- left critical section
+2022/11/09 16:35:50 Node on port: 8082 -- entered critical section
+2022/11/09 16:35:50 Node on port: 8081 -- Passed token to 8082
+2022/11/09 16:35:55 Node on port: 8082 -- left critical section
+2022/11/09 16:35:57 Node on port: 8080 -- entered critical section
+2022/11/09 16:35:57 Node on port: 8082 -- Passed token to 8080
+2022/11/09 16:36:02 Node on port: 8080 -- left critical section
+2022/11/09 16:36:04 Node on port: 8080 -- Passed token to 8081
+2022/11/09 16:36:06 Node on port: 8081 -- Passed token to 8082
+2022/11/09 16:36:08 Node on port: 8082 -- Passed token to 8080
+2022/11/09 16:36:10 Node on port: 8080 -- Passed token to 8081
+2022/11/09 16:36:12 Node on port: 8081 -- Passed token to 8082
+2022/11/09 16:36:14 Node on port: 8082 -- Passed token to 8080
+2022/11/09 16:36:16 Node on port: 8080 -- Passed token to 8081
+2022/11/09 16:36:18 Node on port: 8081 -- Passed token to 8082
+2022/11/09 16:36:20 Node on port: 8080 -- entered critical section
+2022/11/09 16:36:20 Node on port: 8082 -- Passed token to 8080
+2022/11/09 16:36:25 Node on port: 8080 -- left critical section
+2022/11/09 16:36:27 Node on port: 8081 -- entered critical section
+2022/11/09 16:36:27 Node on port: 8080 -- Passed token to 8081
+2022/11/09 16:36:32 Node on port: 8081 -- left critical section
+2022/11/09 16:36:34 Node on port: 8081 -- Passed token to 8082
+2022/11/09 16:36:36 Node on port: 8082 -- Passed token to 8080
+2022/11/09 16:36:38 Node on port: 8080 -- Passed token to 8081
+2022/11/09 16:36:40 Node on port: 8081 -- Passed token to 8082
+2022/11/09 16:36:41 Node on port: 8082 -- Passed token to 8080
