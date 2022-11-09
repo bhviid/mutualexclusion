@@ -8,7 +8,7 @@ import (
 	"log"
 	"net"
 	"os"
-	
+	"time"
 	"flag"
 
 	"google.golang.org/grpc"
@@ -33,7 +33,7 @@ func main() {
 	flag.Parse()
 
 	//https://stackoverflow.com/a/19966217
-	f, err := os.OpenFile("bigoutput2.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	f, err := os.OpenFile("OuputFileJustForYou.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalf("error opening file: %v", err)
 	}
@@ -75,6 +75,8 @@ func main() {
 	
 	p.nextClient = me.NewMutualexclusionClient(conn)
 	
+	// Goroutine that will keep on passing the token around OR 
+	// enter the critical zone if it has a token and a use for it.
 	go func() {
 		for {
 			if p.hasToken && !p.wantsAccess {
@@ -83,9 +85,11 @@ func main() {
 			} else if p.wantsAccess && p.hasToken {
 				//entered critical section
 				log.Printf("Node on port: %d -- entered critical section\n", *ownPort)
-				//time.Sleep(5 * time.Second)
+				
+				// let's simulate a hard working process by sleeping for 2 sec.
+				time.Sleep(2 * time.Second)
 				p.wantsAccess = false
-				//p.passToNextClient()
+
 				log.Printf("Node on port: %d -- left critical section\n",*ownPort)
 			}
 		}
@@ -98,12 +102,13 @@ func main() {
 
 }
 
+// What will I (the node) do when another node calls me?
 func (p *peer) ReceiveToken(ctx context.Context, in *me.Token) (*me.Reply, error) {
-	//time.Sleep(2 * time.Second)
 	p.hasToken = true
 	return &me.Reply{}, nil
 }
 
+// What will I (the node) do before/to call other peers.
 func (p *peer) passToNextClient() {
 	p.hasToken = false
 	p.nextClient.ReceiveToken(p.ctx, &me.Token{})
