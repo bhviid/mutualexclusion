@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package ping;
+option go_package="../dsysMe";
+
+service mutualexclusion{
+    rpc ReceiveToken(Token) returns(Reply);
+}
+
+message Token{
+}
+
+message Reply{
+    
+}
