@@ -81,7 +81,7 @@ func main() {
 		for {
 			if p.hasToken && !p.wantsAccess {
 				p.passToNextClient()
-				//log.Printf("Node on port: %d -- Passed token to %d\n",*ownPort, *nextPort)
+				log.Printf("Node on port: %d -- Passed token to %d\n",*ownPort, *nextPort)
 			} else if p.wantsAccess && p.hasToken {
 				//entered critical section
 				log.Printf("Node on port: %d -- entered critical section\n", *ownPort)
