@@ -9,7 +9,7 @@ We are using the token-ring algorithm
     1. Use the ```-oPort``` flag to set *ownPort* for the node.
     1. Use the ```-nPort``` flag to set *nextClientPort* for the next node in the logical ring.
     1. Use the ```-first``` flag (boolean) to set mark the **first** node in the logical ring.
-1. Press enter in a terminal to request the *critical zone*.
+1. Press the ```enter``` key (inserting a new line) in a terminal to request the *critical zone*.
 
 ## Copy && paste to start (at least 3 clients)
 
